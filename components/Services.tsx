@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useMotionTemplate, useMotionValue, useSpring } from 'framer-motion';
-import { FaCode, FaDatabase, FaReact, FaWordpress, FaRocket } from 'react-icons/fa';
+import { FaCode, FaDatabase, FaReact, FaWordpress, FaRocket, FaLink, FaMobileAlt, FaTools } from 'react-icons/fa';
 
 const ServiceCard = ({ title, description, icon: Icon, delay }: { title: string; description: string; icon: any; delay: number }) => {
     const ref = useRef<HTMLDivElement>(null);
@@ -87,31 +87,43 @@ const ServiceCard = ({ title, description, icon: Icon, delay }: { title: string;
 const Services = () => {
     const services = [
         {
-            title: "Full-Stack Web Developer",
-            description: "End-to-end development of modern web applications, handling both frontend beauty and backend logic.",
+            title: "Custom Frontend Web Development",
+            description:
+                "Designing and developing modern, responsive, and high-performance user interfaces using React.js, Next.js, and modern CSS frameworks such as Tailwind.",
             icon: FaCode,
         },
         {
-            title: "MERN Stack Developer",
-            description: "Specialized in MongoDB, Express.js, React, and Node.js to build robust, data-driven applications.",
-            icon: FaDatabase,
-        },
-        {
-            title: "Next.js & React Specialist",
-            description: "Expert in building high-performance, SEO-friendly, and blazing-fast web experiences using Next.js.",
-            icon: FaReact,
-        },
-        {
-            title: "WordPress & Headless CMS Expert",
-            description: "Custom WordPress solutions and modern Headless CMS architectures for flexible content management.",
+            title: "WordPress & Headless CMS Solutions",
+            description:
+                "Building custom WordPress themes and plugins, as well as implementing Headless CMS architectures for scalable and flexible content management.",
             icon: FaWordpress,
         },
         {
-            title: "Scalable Web App Builder",
-            description: "Designing architectures that grow with your business, focusing on performance, security, and scalability.",
-            icon: FaRocket,
+            title: "Backend API Development with Node.js",
+            description:
+                "Developing secure, scalable, and well-structured RESTful and GraphQL APIs using Node.js and Express.js to support seamless data communication.",
+            icon: FaDatabase,
+        },
+        {
+            title: "Third-Party API Integration",
+            description:
+                "Integrating external services such as payment gateways, social platforms, and CRM systems to enhance functionality and streamline business processes.",
+            icon: FaLink,
+        },
+        {
+            title: "Responsive & Performance-Optimized UI",
+            description:
+                "Creating fully responsive interfaces optimized for speed, accessibility, and search engine performance across all devices and platforms.",
+            icon: FaMobileAlt,
+        },
+        {
+            title: "Website Maintenance & Technical Support",
+            description:
+                "Providing ongoing maintenance, security updates, and technical support to ensure reliability, performance, and long-term stability of your website.",
+            icon: FaTools,
         },
     ];
+
 
     return (
         <section id="services" className="py-20 relative z-[20]">

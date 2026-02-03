@@ -27,12 +27,13 @@ const About = () => {
                     About Me
                 </h1>
                 <p className="text-lg text-gray-300 leading-relaxed">
-                    I am a passionate Full Stack Developer with a keen eye for detail and a drive for creating immersive web experiences.
-                    With a background in both design and engineering, I bridge the gap between aesthetics and functionality.
+                    I&apos;m Sumit Gharat, a passionate Full-Stack Web Developer with over 3+ years of professional experience in building scalable, high-performance web applications. I specialize in creating modern, responsive, and user-focused solutions using React.js, Next.js, Node.js, Express.js, and WordPress.
                 </p>
                 <p className="text-lg text-gray-300 leading-relaxed">
-                    My journey started with simple HTML pages and has evolved into building complex, scalable applications using modern technologies like Next.js, React, and Cloud infrastructure.
-                    I believe in continuous learning and pushing the boundaries of what's possible on the web.
+                    I have hands-on experience working with headless WordPress, REST & GraphQL APIs, and building end-to-end solutions—from UI/UX design to backend logic and deployment. I enjoy transforming complex requirements into clean, efficient, and maintainable code.
+                </p>
+                <p className="text-lg text-gray-300 leading-relaxed">
+                    I&apos;m continuously learning new technologies and best practices to deliver optimized, secure, and future-ready applications. My goal is to build digital products that not only look great but also solve real-world problems.
                 </p>
             </motion.div>
         </section>

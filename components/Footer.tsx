@@ -10,14 +10,24 @@ const Footer = () => {
                 <div className="w-full h-full flex flex-row items-center justify-center flex-wrap">
                     <div className="min-w-[200px] h-auto flex flex-col items-center justify-start z-[20]">
                         <h3 className="font-bold text-[16px] mb-2">Community</h3>
-                        <p className="flex flex-row items-center my-[10px] cursor-pointer hover:text-sky-400 transition-colors">
+                        <a
+                            href="https://github.com/Sumit-dev-tech"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex flex-row items-center my-[10px] cursor-pointer hover:text-sky-400 transition-colors"
+                        >
                             <FaGithub />
                             <span className="text-[15px] ml-[6px]">Github</span>
-                        </p>
-                        <p className="flex flex-row items-center my-[10px] cursor-pointer hover:text-sky-400 transition-colors">
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/in/sumit-gharat1908/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex flex-row items-center my-[10px] cursor-pointer hover:text-sky-400 transition-colors"
+                        >
                             <FaLinkedin />
                             <span className="text-[15px] ml-[6px]">LinkedIn</span>
-                        </p>
+                        </a>
                     </div>
                 </div>
 

@@ -1,79 +1,96 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Canvas } from '@react-three/fiber';
+import Loader3D from './sub/Loader3D';
 
 const Preloader = () => {
     const [isLoading, setIsLoading] = useState(true);
+    const [progress, setProgress] = useState(0);
 
     useEffect(() => {
         if (isLoading) {
             document.body.style.overflow = 'hidden';
+
+            // Progress simulation
+            const interval = setInterval(() => {
+                setProgress(prev => {
+                    if (prev >= 100) {
+                        clearInterval(interval);
+                        return 100;
+                    }
+                    return prev + 1;
+                });
+            }, 20);
+
             const timer = setTimeout(() => {
                 setIsLoading(false);
-            }, 2500);
-            return () => clearTimeout(timer);
+            }, 3000);
+
+            return () => {
+                clearTimeout(timer);
+                clearInterval(interval);
+            };
         } else {
             document.body.style.overflow = 'unset';
         }
     }, [isLoading]);
 
     return (
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
             {isLoading && (
                 <motion.div
+                    key="preloader"
                     initial={{ opacity: 1 }}
                     exit={{
                         opacity: 0,
-                        y: [-20, -100],
-                        transition: { duration: 0.8, ease: "easeInOut" }
+                        transition: { duration: 1, ease: "easeInOut" }
                     }}
-                    className="fixed inset-0 z-[100] flex items-center justify-center bg-[#030014]"
+                    className="fixed inset-0 z-[100] flex items-center justify-center bg-[#030014] overflow-hidden"
                 >
-                    <div className="relative flex flex-col items-center">
-                        {/* Outer rotating ring */}
-                        <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                            className="w-32 h-32 rounded-full border-t-2 border-b-2 border-sky-500 shadow-[0_0_20px_rgba(14,165,233,0.5)]"
-                        />
-
-                        {/* Inner rotating ring (reverse) */}
-                        <motion.div
-                            animate={{ rotate: -360 }}
-                            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                            className="absolute top-4 left-4 w-24 h-24 rounded-full border-r-2 border-l-2 border-green-500 shadow-[0_0_20px_rgba(34,197,94,0.5)]"
-                        />
-
-                        {/* Centered Logo/Text */}
-                        <motion.div
-                            initial={{ scale: 0.5, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ duration: 0.5 }}
-                            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center"
-                        >
-                            <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-green-400">
-                                SG
-                            </span>
-                            <motion.div
-                                animate={{ opacity: [0.2, 1, 0.2] }}
-                                transition={{ duration: 2, repeat: Infinity }}
-                                className="mt-8 text-xs tracking-[0.3em] font-light text-gray-400 uppercase"
-                            >
-                                Initializing
-                            </motion.div>
-                        </motion.div>
-
-                        {/* Progress Bar */}
-                        <div className="absolute -bottom-20 w-48 h-[2px] bg-gray-800 rounded-full overflow-hidden">
-                            <motion.div
-                                initial={{ width: 0 }}
-                                animate={{ width: "100%" }}
-                                transition={{ duration: 2.2, ease: "easeInOut" }}
-                                className="h-full bg-gradient-to-r from-sky-500 to-green-500"
-                            />
-                        </div>
+                    {/* 3D Scene Background */}
+                    <div className="absolute inset-0 w-full h-full">
+                        <Canvas dpr={[1, 2]}>
+                            <Suspense fallback={null}>
+                                <Loader3D progress={progress} />
+                            </Suspense>
+                        </Canvas>
                     </div>
+
+                    {/* UI Overlay */}
+                    <div className="relative z-10 w-full h-full flex flex-col items-center justify-end pb-32 pointer-events-none px-10">
+
+                        {/* Progress Info (Positioned below the 3D center) */}
+                        <motion.div
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="flex flex-col items-center"
+                        >
+                            <div className="flex flex-col items-center gap-6">
+                                <div className="text-sm tracking-[0.6em] font-light text-sky-300 drop-shadow-[0_0_8px_rgba(14,165,233,0.5)] uppercase text-center">
+                                    {progress < 100 ? 'Initializing Systems' : 'Optimization Complete'}
+                                </div>
+
+                                <div className="flex items-center gap-6">
+                                    <div className="w-64 h-[2px] bg-white/5 rounded-full overflow-hidden relative border border-white/5">
+                                        <motion.div
+                                            initial={{ width: 0 }}
+                                            animate={{ width: `${progress}%` }}
+                                            className="h-full bg-gradient-to-r from-sky-600 via-sky-300 to-green-400 shadow-[0_0_15px_rgba(14,165,233,1)]"
+                                        />
+                                    </div>
+                                    <span className="text-sm font-mono text-sky-400 w-12 text-right">
+                                        {Math.round(progress)}%
+                                    </span>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    {/* Vignette Effect */}
+                    <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(3,0,20,0.8)_100%)]" />
                 </motion.div>
             )}
         </AnimatePresence>

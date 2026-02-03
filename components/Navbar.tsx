@@ -75,7 +75,7 @@ const Navbar = () => {
                 <div className="flex md:hidden items-center gap-4">
                     {/* Download CV Button Mobile */}
                     <a
-                        href="/cv.pdf"
+                        href="/resume/Resume-Sumit_Gharat_FSD.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-sky-500 to-green-500 text-white font-medium text-xs shadow-lg shadow-sky-500/20"
@@ -95,17 +95,17 @@ const Navbar = () => {
                 {/* Right Side Interactions (Desktop) */}
                 <div className="hidden md:flex flex-row gap-5 items-center">
                     <div className="flex flex-row gap-3">
-                        <a href="#" className='text-white hover:text-sky-400 transition-colors text-xl transform hover:scale-110 duration-300'>
+                        <a href="https://github.com/Sumit-dev-tech" className='text-white hover:text-sky-400 transition-colors text-xl transform hover:scale-110 duration-300'>
                             <FaGithub />
                         </a>
-                        <a href="#" className='text-white hover:text-sky-400 transition-colors text-xl transform hover:scale-110 duration-300'>
+                        <a href="https://www.linkedin.com/in/sumit-gharat1908/" className='text-white hover:text-sky-400 transition-colors text-xl transform hover:scale-110 duration-300'>
                             <FaLinkedin />
                         </a>
                     </div>
 
                     {/* Download CV Button */}
                     <a
-                        href="/cv.pdf"
+                        href="/resume/Resume-Sumit_Gharat_FSD.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-sky-500 to-green-500 text-white font-medium text-sm hover:scale-105 transition-transform shadow-lg shadow-sky-500/20"

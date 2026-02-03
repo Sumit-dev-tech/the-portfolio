@@ -9,10 +9,11 @@ interface ProjectCardProps {
     src: string;
     title: string;
     description: string;
+    techStack: string[];
     onClick: () => void;
 }
 
-const ProjectCard = ({ id, src, title, description, onClick }: ProjectCardProps) => {
+const ProjectCard = ({ id, src, title, description, techStack, onClick }: ProjectCardProps) => {
     const ref = useRef<HTMLDivElement>(null);
 
     const x = useMotionValue(0);
@@ -96,6 +97,17 @@ const ProjectCard = ({ id, src, title, description, onClick }: ProjectCardProps)
                         <p className="mt-2 text-gray-300 group-hover:text-white transition-colors duration-300">
                             {description}
                         </p>
+
+                        <div className="flex flex-wrap gap-2 mt-4">
+                            {techStack.map((tech, index) => (
+                                <span
+                                    key={index}
+                                    className="px-2 py-1 text-[10px] font-medium text-sky-300 bg-sky-500/10 border border-sky-500/20 rounded-md"
+                                >
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </motion.div>

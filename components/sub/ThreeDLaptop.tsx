@@ -65,57 +65,106 @@ const LaptopModel = ({ scrollProgress = 0 }: { scrollProgress?: number }) => {
                 <meshStandardMaterial color="#050505" roughness={0.1} />
             </mesh>
 
-            <group position={[-1.5, -0.4, -0.55]}>
+            <group position={[-1.50, -0.4, -0.75]}>
                 {(() => {
                     const rows = [
-                        ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "+", "=", "Bksp"],
-                        ["Tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]", "\\"],
-                        ["Caps", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "Enter"],
-                        ["Shift", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/", "Shift", "▲"],
-                        ["Ctrl", "Opt", "Cmd", "Space", "Cmd", "◄", "▼", "►"]
+                        // Function row
+                        [
+                            { char: "Esc", span: 1.1 }, { char: "F1", span: 1 }, { char: "F2", span: 1 }, { char: "F3", span: 1 },
+                            { char: "F4", span: 1 }, { char: "F5", span: 1 }, { char: "F6", span: 1 }, { char: "F7", span: 1 },
+                            { char: "F8", span: 1 }, { char: "F9", span: 1 }, { char: "F10", span: 1 }, { char: "F11", span: 1 },
+                            { char: "F12", span: 1 }, { char: "Del", span: 1.1 }
+                        ],
+                        // Number row
+                        [
+                            { char: "1", span: 1 }, { char: "2", span: 1 }, { char: "3", span: 1 }, { char: "4", span: 1 },
+                            { char: "5", span: 1 }, { char: "6", span: 1 }, { char: "7", span: 1 }, { char: "8", span: 1 },
+                            { char: "9", span: 1 }, { char: "0", span: 1 }, { char: "-", span: 1 }, { char: "=", span: 1 },
+                            { char: "Bksp", span: 2.2 }
+                        ],
+                        // QWERTY row
+                        [
+                            { char: "Tab", span: 1.5 }, { char: "Q", span: 1 }, { char: "W", span: 1 }, { char: "E", span: 1 },
+                            { char: "R", span: 1 }, { char: "T", span: 1 }, { char: "Y", span: 1 }, { char: "U", span: 1 },
+                            { char: "I", span: 1 }, { char: "O", span: 1 }, { char: "P", span: 1 }, { char: "[", span: 1 },
+                            { char: "]", span: 1 }, { char: "\\", span: 1.5 }
+                        ],
+                        // ASDF row
+                        [
+                            { char: "Caps", span: 1.8 }, { char: "A", span: 1 }, { char: "S", span: 1 }, { char: "D", span: 1 },
+                            { char: "F", span: 1 }, { char: "G", span: 1 }, { char: "H", span: 1 }, { char: "J", span: 1 },
+                            { char: "K", span: 1 }, { char: "L", span: 1 }, { char: ";", span: 1 }, { char: "'", span: 1 },
+                            { char: "Enter", span: 2.2 }
+                        ],
+                        // SHIFT row
+                        [
+                            { char: "Shift", span: 2.3 }, { char: "Z", span: 1 }, { char: "X", span: 1 }, { char: "C", span: 1 },
+                            { char: "V", span: 1 }, { char: "B", span: 1 }, { char: "N", span: 1 }, { char: "M", span: 1 },
+                            { char: ",", span: 1 }, { char: ".", span: 1 }, { char: "/", span: 1 }, { char: "Shift", span: 2.7 }
+                        ],
+                        // Bottom row
+                        [
+                            { char: "Ctrl", span: 1.2 }, { char: "Fn", span: 1.2 }, { char: "Win", span: 1.2 }, { char: "Alt", span: 1.2 },
+                            { char: "Space", span: 5.6 }, { char: "Alt", span: 1.2 }, { char: "Ctrl", span: 1.1 }, { char: "◄", span: 0.8 },
+                            { char: "ArrowStack", span: 0.7 }, { char: "►", span: 0.8 }
+                        ]
                     ];
 
-                    return rows.map((rowChars, row) => {
-                        const rowKeys = [];
-                        let colOffset = 0;
+                    const keyPitch = 0.205;
+                    const keyHeight = 0.15;
 
-                        for (let col = 0; col < rowChars.length; col++) {
-                            const char = rowChars[col];
+                    return rows.map((rowKeysData, rowIndex) => {
+                        let currentX = 0;
+                        return rowKeysData.map((keyData, colIndex) => {
+                            const { char, span } = keyData;
+                            const keyWidth = span * keyPitch - 0.055;
+                            const xPos = currentX + (keyWidth / 2);
+                            currentX += span * keyPitch;
 
-                            let keyWidth = 0.15;
-                            let keySpan = 1;
-
-                            // Handle special widths based on standard keyboard ratios
-                            if (char === "Bksp") { keySpan = 2; keyWidth = 0.15 + (0.205 * 1); }
-                            else if (char === "Tab") { keySpan = 1.5; keyWidth = 0.15 + (0.205 * 0.5); }
-                            else if (char === "Caps") { keySpan = 1.8; keyWidth = 0.15 + (0.205 * 0.8); }
-                            else if (char === "Enter") { keySpan = 2.2; keyWidth = 0.15 + (0.205 * 1.2); }
-                            else if (char === "Shift") {
-                                keySpan = col === 0 ? 2.3 : 1.7;
-                                keyWidth = 0.15 + (0.205 * (keySpan - 1));
+                            if (char === "ArrowStack") {
+                                return (
+                                    <group key={`${rowIndex}-${colIndex}`} position={[xPos, 0, rowIndex * 0.22]}>
+                                        {/* Up Button */}
+                                        <group position={[0, 0, -0.04]}>
+                                            <mesh material={keyBaseMaterial}>
+                                                <boxGeometry args={[keyWidth, 0.06, keyHeight / 2 - 0.01]} />
+                                            </mesh>
+                                            <mesh position={[0, -0.01, 0]} material={rgbBorderMaterial}>
+                                                <boxGeometry args={[keyWidth + 0.015, 0.04, keyHeight / 2 + 0.005]} />
+                                            </mesh>
+                                            <Text position={[0, 0.04, 0]} rotation={[-Math.PI / 2, 0, 0]} fontSize={0.04}>
+                                                <primitive object={rgbTextMaterial} attach="material" />
+                                                ▲
+                                            </Text>
+                                        </group>
+                                        {/* Down Button */}
+                                        <group position={[0, 0, 0.04]}>
+                                            <mesh material={keyBaseMaterial}>
+                                                <boxGeometry args={[keyWidth, 0.06, keyHeight / 2 - 0.01]} />
+                                            </mesh>
+                                            <mesh position={[0, -0.01, 0]} material={rgbBorderMaterial}>
+                                                <boxGeometry args={[keyWidth + 0.015, 0.04, keyHeight / 2 + 0.005]} />
+                                            </mesh>
+                                            <Text position={[0, 0.04, 0]} rotation={[-Math.PI / 2, 0, 0]} fontSize={0.04}>
+                                                <primitive object={rgbTextMaterial} attach="material" />
+                                                ▼
+                                            </Text>
+                                        </group>
+                                    </group>
+                                );
                             }
-                            else if (char === "Space") {
-                                keySpan = 6.2;
-                                keyWidth = 0.15 + (0.205 * 5.2);
-                            }
-                            else if (["Ctrl", "Opt", "Cmd"].includes(char)) {
-                                keySpan = 1.2;
-                                keyWidth = 0.15 + (0.205 * 0.2);
-                            }
 
-                            const xPos = colOffset + (keyWidth / 2) - (0.15 / 2);
-
-                            rowKeys.push(
-                                <group key={`${row}-${col}`} position={[xPos, 0, row * 0.22]}>
+                            return (
+                                <group key={`${rowIndex}-${colIndex}`} position={[xPos, 0, rowIndex * 0.22]}>
                                     <mesh material={keyBaseMaterial}>
-                                        <boxGeometry args={[keyWidth, 0.06, 0.15]} />
+                                        <boxGeometry args={[keyWidth, 0.06, keyHeight]} />
                                     </mesh>
                                     <mesh position={[0, -0.01, 0]} material={rgbBorderMaterial}>
-                                        <boxGeometry args={[keyWidth + 0.015, 0.04, 0.165]} />
+                                        <boxGeometry args={[keyWidth + 0.015, 0.04, keyHeight + 0.015]} />
                                     </mesh>
                                     {char !== "" && (
                                         <Text
-                                            position={[0, 0.04, 0.01]}
+                                            position={[0, 0.04, 0]}
                                             rotation={[-Math.PI / 2, 0, 0]}
                                             fontSize={char.length > 2 ? 0.035 : 0.06}
                                         >
@@ -125,10 +174,7 @@ const LaptopModel = ({ scrollProgress = 0 }: { scrollProgress?: number }) => {
                                     )}
                                 </group>
                             );
-
-                            colOffset += keySpan * 0.205;
-                        }
-                        return rowKeys;
+                        });
                     });
                 })()}
             </group>
@@ -139,6 +185,37 @@ const LaptopModel = ({ scrollProgress = 0 }: { scrollProgress?: number }) => {
             </mesh>
 
             <group position={[0, -0.43, -1.05]} rotation={[Math.PI / 12, 0, 0]}>
+                {/* Lid Exterior (with HP Logo) */}
+                <mesh position={[0, 1.05, -0.04]}>
+                    <boxGeometry args={[3.2, 2.1, 0.01]} />
+                    <meshStandardMaterial color="#1a1a1a" roughness={0.3} metalness={0.8} />
+                </mesh>
+
+                {/* HP Logo (Modern 4-line style) */}
+                <group position={[0, 1.05, -0.046]} rotation={[0, Math.PI, 0]}>
+                    {/* Line 1 (h) */}
+                    <mesh position={[-0.15, 0, 0]} rotation={[0, 0, -0.4]}>
+                        <boxGeometry args={[0.04, 0.6, 0.01]} />
+                        <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={0.5} metalness={1} roughness={0.2} />
+                    </mesh>
+                    {/* Line 2 (h) */}
+                    <mesh position={[-0.05, -0.15, 0]} rotation={[0, 0, -0.4]}>
+                        <boxGeometry args={[0.04, 0.3, 0.01]} />
+                        <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={0.5} metalness={1} roughness={0.2} />
+                    </mesh>
+                    {/* Line 3 (p) */}
+                    <mesh position={[0.05, 0.15, 0]} rotation={[0, 0, -0.4]}>
+                        <boxGeometry args={[0.04, 0.3, 0.01]} />
+                        <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={0.5} metalness={1} roughness={0.2} />
+                    </mesh>
+                    {/* Line 4 (p) */}
+                    <mesh position={[0.15, 0, 0]} rotation={[0, 0, -0.4]}>
+                        <boxGeometry args={[0.04, 0.6, 0.01]} />
+                        <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={0.5} metalness={1} roughness={0.2} />
+                    </mesh>
+                </group>
+
+                {/* Lid Interior */}
                 <mesh position={[0, 1.05, 0]}>
                     <boxGeometry args={[3.2, 2.1, 0.08]} />
                     <meshStandardMaterial color="#1a1a1a" roughness={0.3} metalness={0.8} />
