@@ -116,7 +116,7 @@ const Skills = () => {
     return (
         <section
             id="skills"
-            className="flex flex-col items-center justify-center py-20 relative z-[20] w-full max-w-7xl mx-auto px-4 md:px-20"
+            className="flex flex-col items-center justify-center py-20 relative z-20 w-full max-w-7xl 2xl:max-w-[1400px] mx-auto px-4 md:px-20 overflow-x-hidden"
         >
             <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}

@@ -126,8 +126,8 @@ const Services = () => {
 
 
     return (
-        <section id="services" className="py-20 relative z-[20]">
-            <div className="max-w-7xl mx-auto px-6">
+        <section id="services" className="py-20 relative z-20 overflow-x-hidden">
+            <div className="max-w-7xl 2xl:max-w-[1400px] mx-auto px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}

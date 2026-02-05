@@ -34,7 +34,7 @@ const Projects = () => {
 
     return (
         <div
-            className="flex flex-col container items-center justify-center py-20 relative z-20"
+            className="flex flex-col items-center justify-center py-20 relative z-20 w-full max-w-7xl 2xl:max-w-[1400px] mx-auto overflow-x-hidden"
             id="projects"
         >
             <h1 className="text-[30px] md:text-[40px] font-semibold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-green-500 pb-10">

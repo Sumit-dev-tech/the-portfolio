@@ -35,9 +35,11 @@ export default function RootLayout({
         <ParallaxBackground />
         <CustomCursor />
         <Navbar />
-        <main className="h-full w-full">
-          {children}
-        </main>
+        <SmoothScroll>
+          <main className="h-full w-full overflow-x-hidden">
+            {children}
+          </main>
+        </SmoothScroll>
       </body>
     </html>
   );

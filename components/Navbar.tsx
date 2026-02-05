@@ -39,7 +39,7 @@ const Navbar = () => {
 
     return (
         <div className="w-full h-[65px] fixed top-0 shadow-lg shadow-[#2A0E61]/50 bg-[#03001417] backdrop-blur-md z-50 px-4 md:px-10">
-            <div className="w-full h-full flex flex-row items-center justify-between m-auto px-[10px] max-w-7xl">
+            <div className="w-full h-full flex flex-row items-center justify-between mx-auto px-[10px] max-w-7xl 2xl:max-w-[1400px]">
                 <a
                     href="/"
                     className="h-auto w-auto flex flex-row items-center cursor-pointer"

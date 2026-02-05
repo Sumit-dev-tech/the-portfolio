@@ -6,7 +6,7 @@ import ThreeDLaptop from './sub/ThreeDLaptop';
 
 const About = () => {
     return (
-        <section id="about" className="flex flex-col md:flex-row items-center justify-center gap-10 px-4 md:px-10 py-20 relative z-[20] overflow-hidden container">
+        <section id="about" className="flex flex-col md:flex-row items-center justify-center gap-10 px-4 md:px-20 py-20 relative z-20 overflow-hidden max-w-7xl 2xl:max-w-[1400px] mx-auto">
             <motion.div
                 initial={{ opacity: 0, x: -100 }}
                 whileInView={{ opacity: 1, x: 0 }}
