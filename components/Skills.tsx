@@ -82,7 +82,7 @@ const Skills = () => {
                 { name: "SCSS", icon: SiSass, color: "#CC6699" },
                 { name: "Bootstrap", icon: FaBootstrap, color: "#7952B3" },
                 { name: "Shadcn UI", icon: SiShadcnui, color: "#FFFFFF" },
-                { name: "Material UI", icon: SiMui, color: "#007FFF" },
+                // { name: "Material UI", icon: SiMui, color: "#007FFF" },
                 { name: "Framer Motion", icon: SiFramer, color: "#0055FF" },
                 { name: "WordPress", icon: FaWordpress, color: "#21759B" },
             ]

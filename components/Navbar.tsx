@@ -44,7 +44,7 @@ const Navbar = () => {
                     href="/"
                     className="h-auto w-auto flex flex-row items-center cursor-pointer"
                 >
-                    <span className="font-bold ml-[10px] block text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-green-500 hover:scale-105 transition-transform duration-300 cursor-pointer">
+                    <span className="font-bold ml-[10px] block text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-green-500 hover:scale-105 transition-transform duration-300 cursor-pointer text-xl">
                         Sumit Gharat
                     </span>
                 </a>
