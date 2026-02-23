@@ -16,7 +16,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Premium Portfolio | Developer & Designer",
+  title: "Sumit Gharat | Full Stack Developer",
   description: "A collaborative futuristic portfolio.",
   icons: {
     icon: "/favicon.svg",
