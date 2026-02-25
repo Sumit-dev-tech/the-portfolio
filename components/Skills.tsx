@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { IconType } from 'react-icons';
 import {
-    FaReact, FaNodeJs, FaDatabase, FaGitAlt, FaWordpress, FaPhp, FaHtml5, FaCss3Alt, FaBootstrap
+    FaReact, FaNodeJs, FaDatabase, FaGitAlt, FaWordpress, FaPhp, FaHtml5, FaCss3Alt, FaBootstrap, FaGithub
 } from 'react-icons/fa';
 import {
     SiTypescript, SiNextdotjs, SiTailwindcss, SiJavascript, SiSass, SiFramer,
@@ -103,7 +103,7 @@ const Skills = () => {
             title: "DevOps & Tools",
             skills: [
                 { name: "Git", icon: FaGitAlt, color: "#F05032" },
-                { name: "GitHub", icon: FaGitAlt, color: "#FFFFFF" },
+                { name: "GitHub", icon: FaGithub, color: "#FFFFFF" },
                 { name: "Vercel", icon: SiVercel, color: "#FFFFFF" },
                 { name: "DigitalOcean", icon: SiDigitalocean, color: "#0080FF" },
                 { name: "Cloudflare", icon: SiCloudflare, color: "#F38020" },
