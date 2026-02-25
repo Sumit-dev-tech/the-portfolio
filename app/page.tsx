@@ -10,10 +10,17 @@ import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 import ScrollToTop from "@/components/ScrollToTop";
 import { motion } from "framer-motion";
-import { useScrollRestoration } from "@/utils/useScrollRestoration";
+import { useEffect } from "react";
 
 export default function Home() {
-  useScrollRestoration(3500); // Wait for preloader and initial animations to finish
+  useEffect(() => {
+    // Force scroll to top on reload
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <main className="h-full w-full">
       <Preloader />
