@@ -124,7 +124,7 @@ const Skills = () => {
                 transition={{ duration: 0.5 }}
                 className="flex flex-col items-center mb-16 text-center"
             >
-                <h1 className="text-[45px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-white to-green-400 pb-2">
+                <h1 className="text-[45px] font-bold text-transparent bg-clip-text bg-linear-to-r from-sky-400 via-white to-green-400 pb-2">
                     My Technical Arsenal
                 </h1>
                 <div className="h-1 w-32 bg-sky-500 rounded-full mb-6"></div>

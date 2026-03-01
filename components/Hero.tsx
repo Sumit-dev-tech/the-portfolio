@@ -10,10 +10,10 @@ const Hero = ({ scrollOpacity = 1 }: { scrollOpacity?: number }) => {
     const [index, setIndex] = useState(0);
     const services = [
         "Full-Stack Web Developer",
-        "MERN Stack Developer",
+        "WordPress & Headless CMS",
         "Next.js & React Specialist",
-        "WordPress & Headless CMS Expert",
-        "Scalable Web App Builder"
+        "PHP & Node.js Developer",
+        "Custom Web Solution Architect"
     ];
 
     useEffect(() => {
@@ -48,7 +48,7 @@ const Hero = ({ scrollOpacity = 1 }: { scrollOpacity?: number }) => {
             id="home"
             onMouseMove={handleMouseMove}
         >
-            <div className="flex flex-col md:flex-row items-center justify-center px-6 md:px-20 gap-10 lg:gap-20 w-full max-w-7xl 2xl:max-w-[1400px] mx-auto z-[20]">
+            <div className="flex flex-col md:flex-row items-center justify-center px-6 md:px-20 gap-10 lg:gap-20 w-full max-w-7xl 2xl:max-w-[1400px] mx-auto z-20">
                 <div className="h-full w-full flex flex-col gap-5 justify-center items-start text-left">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -72,7 +72,7 @@ const Hero = ({ scrollOpacity = 1 }: { scrollOpacity?: number }) => {
                     >
                         <div className="flex flex-col gap-2">
                             <span className="text-2xl md:text-4xl text-gray-400 font-medium">I am working as</span>
-                            <div className="h-[120px] sm:h-[150px] md:h-[120px] overflow-hidden relative w-full">
+                            <div className="h-[160px] sm:h-[200px] md:h-[180px] overflow-visible relative w-full">
                                 <AnimatePresence initial={false}>
                                     <motion.span
                                         key={services[index]}
@@ -83,7 +83,7 @@ const Hero = ({ scrollOpacity = 1 }: { scrollOpacity?: number }) => {
                                             duration: 0.5,
                                             ease: "easeInOut"
                                         }}
-                                        className="absolute inset-y-0 left-0 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-green-400 w-full leading-tight"
+                                        className="absolute inset-y-0 left-0 flex items-center text-transparent bg-clip-text bg-linear-to-r from-sky-400 to-green-400 w-full leading-[1.1] py-2"
                                     >
                                         {services[index]}
                                     </motion.span>
@@ -110,7 +110,7 @@ const Hero = ({ scrollOpacity = 1 }: { scrollOpacity?: number }) => {
                     >
                         <a
                             href="#projects"
-                            className="py-3 px-4 md:px-6 text-sm md:text-base button-primary text-center text-white cursor-pointer rounded-lg bg-gradient-to-r from-sky-500 to-green-500 hover:scale-105 transition duration-300 flex items-center gap-2 font-medium"
+                            className="py-3 px-4 md:px-6 text-sm md:text-base button-primary text-center text-white cursor-pointer rounded-lg bg-linear-to-r from-sky-500 to-green-500 hover:scale-105 transition duration-300 flex items-center gap-2 font-medium"
                         >
                             See My Work <FaArrowRight />
                         </a>
@@ -134,7 +134,7 @@ const Hero = ({ scrollOpacity = 1 }: { scrollOpacity?: number }) => {
                         style={{ x: imgX, y: imgY }}
                         className="relative z-10"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-r from-sky-500 to-green-500 rounded-full blur-[40px] md:blur-[60px] opacity-40 scale-110"></div>
+                        <div className="absolute inset-0 bg-linear-to-r from-sky-500 to-green-500 rounded-full blur-2xl md:blur-3xl opacity-40 scale-110"></div>
                         <motion.div
                             animate={{
                                 y: [0, -15, 0],
@@ -144,7 +144,7 @@ const Hero = ({ scrollOpacity = 1 }: { scrollOpacity?: number }) => {
                                 repeat: Infinity,
                                 ease: "easeInOut"
                             }}
-                            className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] rounded-full p-[8px] md:p-[10px] bg-gradient-to-r from-yellow-400 to-blue-500 shadow-2xl"
+                            className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] rounded-full p-[8px] md:p-[10px] bg-linear-to-r from-yellow-400 to-blue-500 shadow-2xl"
                         >
                             <div className="w-full h-full rounded-full overflow-hidden bg-black">
                                 <Image

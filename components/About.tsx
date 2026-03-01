@@ -23,7 +23,7 @@ const About = () => {
                 transition={{ duration: 0.8 }}
                 className="w-full md:w-1/2 flex flex-col gap-5 text-white items-center md:items-start text-center md:text-left"
             >
-                <h1 className="text-[40px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-green-500">
+                <h1 className="text-[40px] font-bold text-transparent bg-clip-text bg-linear-to-r from-sky-500 to-green-500">
                     About Me
                 </h1>
                 <p className="text-lg text-gray-300 leading-relaxed">

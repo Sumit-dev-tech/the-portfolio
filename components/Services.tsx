@@ -64,7 +64,7 @@ const ServiceCard = ({ title, description, icon: Icon, delay }: { title: string;
         >
             <div
                 style={{ transform: "translateZ(50px)" }}
-                className="w-12 h-12 mb-4 rounded-lg bg-gradient-to-br from-sky-500 to-green-500 flex items-center justify-center text-white text-xl shadow-lg group-hover:scale-110 transition-transform duration-300"
+                className="w-12 h-12 mb-4 rounded-lg bg-linear-to-br from-sky-500 to-green-500 flex items-center justify-center text-white text-xl shadow-lg group-hover:scale-110 transition-transform duration-300"
             >
                 <Icon />
             </div>
@@ -134,7 +134,7 @@ const Services = () => {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-green-500 mb-4">
+                    <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-linear-to-r from-sky-500 to-green-500 mb-4">
                         My Services
                     </h2>
                     <p className="text-gray-400 max-w-2xl mx-auto">
